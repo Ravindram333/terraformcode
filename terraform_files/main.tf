@@ -1,10 +1,20 @@
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  subscription_id = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  tenant_id       = var.tenant_id
+}
+
+terraform {
+  backend "azurerm" {
+    storage_account_name = "_terraformstorageaccount"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+
+    # rather than defining this inline, the Access Key can also be sourced
+    # from an Environment Variable - more information is available below.
+    access_key = "_storagekey_"
+    features {}
+
+  }
 }
 
 # Create a resource group
@@ -131,12 +141,4 @@ resource "azurerm_virtual_machine_data_disk_attachment" "vm-disk" {
   virtual_machine_id = azurerm_windows_virtual_machine.vm.id
   lun                = "10"
   caching            = "ReadWrite"
-}
-
-output "public_ip_address" {
-  value = azurerm_public_ip.publicip.*.ip_address
-}
-
-output "network_interface_private_ip" {
-  value = azurerm_network_interface.nic.*.private_ip_address
 }

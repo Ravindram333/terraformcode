@@ -36,3 +36,11 @@ variable "network_security_name" {
 variable "windows_vm_name" {
   default     = "terraform-vm"
 }
+
+variable "adminusername" {
+  default     = "adminuser"
+}
+
+variable "adminpassword" {
+  default     = "Ravindra@2503"
+}

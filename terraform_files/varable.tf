@@ -1,20 +1,4 @@
-variable "subscription_id" {
-  default     = "f7f35ba1-a14a-44c7-8363-51886ab8dd0f"
-}
-
-variable "client_id" {
-    default     = "4751bd5c-9ca1-4dff-8cf8-efe69227afda"
-}
-
-variable "client_secret" {
-    default     = "lcd8Q~y7UWx4S5.YBtHayir2Hs_6kLDHxMJlia7V"
-}
-
-variable "tenant_id" {
-  default     = "cb561bac-8eae-4e86-979a-765c514af3ae"
-}
-
-variable "resource_group_name_01" {
+variable "resource_group_name" {
   default     = "terraform-rg-01"
 }
 

@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: web-app
+  name: web-app-terra
 
 steps:
 - task: CopyFiles@2

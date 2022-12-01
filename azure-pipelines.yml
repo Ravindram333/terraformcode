@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: web-app
+
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/terraform'
+  inputs:
+    SourceFolder: 'terraform_files'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/terraform'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
